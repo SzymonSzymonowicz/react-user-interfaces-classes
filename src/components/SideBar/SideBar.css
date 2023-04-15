@@ -1,0 +1,16 @@
+.side-bar {
+    min-width: 20%;
+    width: 200px;
+    max-width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+  
+    background-color: rgb(95, 168, 144);
+}
+
+.side-bar .utils{
+    ali  
+}
