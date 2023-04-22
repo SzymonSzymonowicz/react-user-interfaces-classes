@@ -10,6 +10,9 @@
     background-color: rgb(216, 244, 235);
     padding: 20px;
     /* background-color: gray; */
+
+    /* needed for sidebard to be sticky */
+    overflow-y: scroll;
 }
 
 .content-container input {

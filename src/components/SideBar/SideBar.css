@@ -1,8 +1,11 @@
 .side-bar {
+    top: 0;
+    position: sticky;
     min-width: 20%;
-    width: 200px;
-    max-width: 100%;
-    height: 100%;
+    /* width: 200px; */
+    height: 100vh;
+
+    font-size: 24px;
 
     display: flex;
     flex-flow: column;
@@ -11,6 +14,21 @@
     background-color: rgb(95, 168, 144);
 }
 
-.side-bar .utils{
-    ali  
+.side-bar-item {
+    width: 100%;
+    padding: 20px;
+}
+
+.side-bar .utils {
+    margin-top: auto;
+}
+
+.side-bar .utils span{
+    font-size: 40px;    
+}
+
+.side-bar-item.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

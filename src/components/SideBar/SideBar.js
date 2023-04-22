@@ -4,12 +4,19 @@ import React from 'react';
 function SideBar() {
   return (
     <div className="side-bar">
-        <ul>
-            <li>Overview</li>
-            <li>Portfolio</li>
-            <li>Stock</li>
-            <li>Help</li>
-        </ul>
+        <div className="side-bar-item header">
+            <div>Logo</div>
+            <div>
+            <span class="material-symbols-outlined">
+                first_page
+            </span>
+            </div>
+        </div>
+
+        <div className='side-bar-item'>My portfolio</div>
+        <div className='side-bar-item'>Stocks</div>
+        <div className='side-bar-item'>General meetings</div>
+        <div className='side-bar-item'>Help</div>
 
         <div className='utils'>
 
