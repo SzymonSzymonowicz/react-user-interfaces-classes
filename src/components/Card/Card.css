@@ -6,6 +6,7 @@
     width: 100px;
     height: 100px;
     margin: 20px;
+    padding: 10px;
     /* box-shadow: 7px 13px 29px -14px rgba(0, 0, 0, 0.4); */
     display: flex;
 }
