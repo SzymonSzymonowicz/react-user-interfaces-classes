@@ -9,22 +9,25 @@ import Chart2 from './assets/chart2_allegro_stock.png';
 import Chart3 from './assets/chart3_cdp_stock.png';
 import PieChart from './assets/some_pie_chart.png';
 
-import { Route, Routes, Link } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import { ThemeProvider } from './components/ThemeContext';
 
 function App() {
   return (
-    <div className="app">
-      <SideBar />
-      <ContentContainer>
-        <Routes>
-          <Route path="/" element={<Dashboard/>} />
-          <Route path="/portfolio" element={<span>My portfolio subpage</span>} />
-          <Route path="/stocks" element={<span>Stocks subpage</span>} />
-          <Route path="/gm" element={<span>General meetings subpage</span>} />
-          <Route path="/help" element={<span>Help subpage</span>} />
-      </Routes>
-      </ContentContainer>
-    </div>
+    <ThemeProvider>
+      <div className="app">
+        <SideBar />
+        <ContentContainer>
+          <Routes>
+            <Route path="/" element={<Dashboard/>} />
+            <Route path="/portfolio" element={<span>My portfolio subpage</span>} />
+            <Route path="/stocks" element={<span>Stocks subpage</span>} />
+            <Route path="/gm" element={<span>General meetings subpage</span>} />
+            <Route path="/help" element={<span>Help subpage</span>} />
+        </Routes>
+        </ContentContainer>
+      </div>
+    </ThemeProvider>
   );
 }
 

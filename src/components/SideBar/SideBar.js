@@ -1,11 +1,21 @@
 import './SideBar.css';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import ThemeContext from '../ThemeContext';
 
 function SideBar() {
 
     const [previousFontSize, setPreviousFontSize] = useState(getComputedStyle(document.documentElement).getPropertyValue('--base-font-size'));
+
+    const previousPrimaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color');
+    const previousSecondaryColor = getComputedStyle(document.documentElement).getPropertyValue('--secondary-color');
+    const previousFontColor= getComputedStyle(document.documentElement).getPropertyValue('--font-color');
+
+    const [isDarkmodeToggled, setIsDarkmodeToggled] = useState(false);
+
+
+    const { toggleDarkmode } = useContext(ThemeContext);
 
     const increaseFontSize = () => {
         alterFontSize(x => x + 1);
@@ -24,10 +34,35 @@ function SideBar() {
     }
 
     const setFontSize = (size) => {
+        setCssPropertyValue("base-font-size", size);
+    }
+
+    const setCssPropertyValue = (propertyName, value) => {
         document.documentElement.style.setProperty(
-            "--base-font-size",
-            size,
+            "--" + propertyName,
+            value,
         )
+    }
+
+
+    useEffect(() => {
+        console.log("Reacting to darkmode change:" + isDarkmodeToggled);
+        console.table([previousPrimaryColor, previousSecondaryColor, previousFontColor]);
+
+        if(isDarkmodeToggled) {
+            setCssPropertyValue("primary-color", "black");
+            setCssPropertyValue("secondary-color", "grey");
+            setCssPropertyValue("font-color", "yellow");
+        } else {
+            setCssPropertyValue("primary-color", previousPrimaryColor);
+            setCssPropertyValue("secondary-color", previousSecondaryColor);
+            setCssPropertyValue("font-color", previousFontColor);
+        }
+    });
+
+    const setDarkmodeTheme = () => {
+        console.log("setting darkmode, actual: " + isDarkmodeToggled + " to be set: " + !isDarkmodeToggled);
+        setIsDarkmodeToggled(!isDarkmodeToggled);
     }
 
   return (
@@ -47,7 +82,7 @@ function SideBar() {
 
         <div className='utils'>
 
-            <span className="material-symbols-outlined">
+            <span className="material-symbols-outlined" onClick={() => toggleDarkmode()}>
                 contrast
             </span>
             
