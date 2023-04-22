@@ -1,8 +1,35 @@
 import './SideBar.css';
 import React from 'react';
 import { Link } from "react-router-dom";
+import { useState } from 'react';
 
 function SideBar() {
+
+    const [previousFontSize, setPreviousFontSize] = useState(getComputedStyle(document.documentElement).getPropertyValue('--base-font-size'));
+
+    const increaseFontSize = () => {
+        alterFontSize(x => x + 1);
+    }
+
+    const decreaseFontSize = () => {
+        alterFontSize(x => x - 1);
+    }
+
+    const alterFontSize = (changeFun) => {
+        console.log("fired + prev: " + previousFontSize);
+        var increased = changeFun(parseInt(previousFontSize, 10)) + 'px';
+        console.log("about to set: " + increased)
+        setPreviousFontSize(increased);
+        setFontSize(increased);
+    }
+
+    const setFontSize = (size) => {
+        document.documentElement.style.setProperty(
+            "--base-font-size",
+            size,
+        )
+    }
+
   return (
     <div className="side-bar">
         <div className="side-bar-item header">
@@ -20,14 +47,14 @@ function SideBar() {
 
         <div className='utils'>
 
-            <span class="material-symbols-outlined">
+            <span className="material-symbols-outlined">
                 contrast
             </span>
             
-            <span class="material-symbols-outlined">
+            <span className="material-symbols-outlined" onClick={() => increaseFontSize()}>
                 text_increase
             </span>
-            <span class="material-symbols-outlined">
+            <span className="material-symbols-outlined" onClick={() => decreaseFontSize()}>
                 text_decrease
             </span>
         </div>

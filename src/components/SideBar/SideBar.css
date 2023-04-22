@@ -5,7 +5,7 @@
     /* width: 200px; */
     height: 100vh;
 
-    font-size: 24px;
+    font-size: calc(var(--base-font-size) + 6px);
     /* font-weight: 400; */
 
     display: flex;
@@ -22,10 +22,11 @@
 
 .side-bar .utils {
     margin-top: auto;
+    align-self: flex-end;
 }
 
 .side-bar .utils span{
-    font-size: 40px;    
+    font-size: calc(var(--base-font-size) + 24px);
 }
 
 .side-bar-item.header {
