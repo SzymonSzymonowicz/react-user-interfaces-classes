@@ -1,31 +1,31 @@
 .chat {
-    position: fixed;
-    z-index: 1;
-    right: 0;
-    bottom: 0;
-    margin: 0 2% 2% 0;
-    
-    width: 10vw;
-    height: 10vw;
-    
-    border-radius: 50%;
+	position: fixed;
+	z-index: 1;
+	right: 0;
+	bottom: 0;
+	margin: 0 2% 2% 0;
 
-    background-color: black;
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	width: 10vw;
+	height: 10vw;
+
+	border-radius: 50%;
+
+	background-color: black;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .chat:hover {
-    cursor: pointer;
-    opacity: 0.9;
+	cursor: pointer;
+	opacity: 0.9;
 }
 
 .chat div {
-    z-index: 2;
-    color: white;
-    /* top:50%; */
-    /* left: 50%; */
-    /* transform: translate(-50%, -50%); */
+	z-index: 2;
+	color: white;
+	/* top:50%; */
+	/* left: 50%; */
+	/* transform: translate(-50%, -50%); */
 }
