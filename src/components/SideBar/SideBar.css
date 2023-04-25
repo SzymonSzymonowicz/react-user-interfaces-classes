@@ -20,6 +20,17 @@
 	padding: 20px;
 }
 
+.side-bar-item a,
+a:visited,
+a:link {
+	text-decoration: none;
+	color: white;
+}
+
+.side-bar-item a:hover {
+	color: black;
+}
+
 .side-bar .utils {
 	margin-top: auto;
 	align-self: flex-end;
