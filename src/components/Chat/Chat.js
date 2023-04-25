@@ -9,11 +9,26 @@ function Chat() {
 	};
 
 	return (
-		<div className="chat" onClick={changeVisible}>
-			<div>
-				{visible && `Visible `}
-				Chat
-			</div>
+		<div className="chatArea">
+			{visible ? (
+				<div className="chatWindow">
+					<div className="chatHeader">
+						<div className="chatHeaderText">Chat with expert advisor</div>
+						<div className="chatCloseButton" onClick={changeVisible}>
+							<span class="material-symbols-outlined">close</span>
+						</div>
+					</div>
+					<div className="chatContent"></div>
+					<div className="chatInput">
+						<textarea placeholder="Type message"></textarea>
+					</div>
+				</div>
+			) : (
+				<div className="chatIcon" onClick={changeVisible}>
+					{/* {visible ? `Visible ` : `Not Visible`} */}
+					<span class="material-symbols-outlined">forum</span>
+				</div>
+			)}
 		</div>
 	);
 }
