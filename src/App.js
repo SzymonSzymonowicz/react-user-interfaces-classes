@@ -11,6 +11,7 @@ import PieChart from './assets/some_pie_chart.png';
 
 import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from './components/ThemeContext';
+import Chat from './components/Chat/Chat';
 
 function App() {
   return (
@@ -24,8 +25,9 @@ function App() {
             <Route path="/stocks" element={<span>Stocks subpage</span>} />
             <Route path="/gm" element={<span>General meetings subpage</span>} />
             <Route path="/help" element={<span>Help subpage</span>} />
-        </Routes>
+          </Routes>
         </ContentContainer>
+        <Chat/>
       </div>
     </ThemeProvider>
   );

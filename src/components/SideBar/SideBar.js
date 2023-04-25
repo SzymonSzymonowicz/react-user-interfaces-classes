@@ -1,20 +1,12 @@
 import './SideBar.css';
 import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import ThemeContext from '../ThemeContext';
 
 function SideBar() {
 
     const [previousFontSize, setPreviousFontSize] = useState(getComputedStyle(document.documentElement).getPropertyValue('--base-font-size'));
-
-    const previousPrimaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color');
-    const previousSecondaryColor = getComputedStyle(document.documentElement).getPropertyValue('--secondary-color');
-    const previousFontColor= getComputedStyle(document.documentElement).getPropertyValue('--font-color');
-
-    const [isDarkmodeToggled, setIsDarkmodeToggled] = useState(false);
-
-
     const { toggleDarkmode } = useContext(ThemeContext);
 
     const increaseFontSize = () => {
@@ -26,9 +18,7 @@ function SideBar() {
     }
 
     const alterFontSize = (changeFun) => {
-        console.log("fired + prev: " + previousFontSize);
         var increased = changeFun(parseInt(previousFontSize, 10)) + 'px';
-        console.log("about to set: " + increased)
         setPreviousFontSize(increased);
         setFontSize(increased);
     }
@@ -44,33 +34,12 @@ function SideBar() {
         )
     }
 
-
-    useEffect(() => {
-        console.log("Reacting to darkmode change:" + isDarkmodeToggled);
-        console.table([previousPrimaryColor, previousSecondaryColor, previousFontColor]);
-
-        if(isDarkmodeToggled) {
-            setCssPropertyValue("primary-color", "black");
-            setCssPropertyValue("secondary-color", "grey");
-            setCssPropertyValue("font-color", "yellow");
-        } else {
-            setCssPropertyValue("primary-color", previousPrimaryColor);
-            setCssPropertyValue("secondary-color", previousSecondaryColor);
-            setCssPropertyValue("font-color", previousFontColor);
-        }
-    });
-
-    const setDarkmodeTheme = () => {
-        console.log("setting darkmode, actual: " + isDarkmodeToggled + " to be set: " + !isDarkmodeToggled);
-        setIsDarkmodeToggled(!isDarkmodeToggled);
-    }
-
   return (
     <div className="side-bar">
         <div className="side-bar-item header">
             <div><Link to="/">Logo</Link></div>
             <div>
-            <span class="material-symbols-outlined">
+            <span className="material-symbols-outlined">
                 first_page
             </span>
             </div>
