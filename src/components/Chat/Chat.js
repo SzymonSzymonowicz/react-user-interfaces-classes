@@ -15,7 +15,7 @@ function Chat() {
 					<div className="chatHeader">
 						<div className="chatHeaderText">Chat with expert advisor</div>
 						<div className="chatCloseButton" onClick={changeVisible}>
-							<span class="material-symbols-outlined">close</span>
+							<span className="material-symbols-outlined">close</span>
 						</div>
 					</div>
 					<div className="chatContent"></div>
@@ -26,7 +26,7 @@ function Chat() {
 			) : (
 				<div className="chatIcon" onClick={changeVisible}>
 					{/* {visible ? `Visible ` : `Not Visible`} */}
-					<span class="material-symbols-outlined">forum</span>
+					<span className="material-symbols-outlined">forum</span>
 				</div>
 			)}
 		</div>
