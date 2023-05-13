@@ -11,24 +11,47 @@ import PieChart from "./assets/some_pie_chart.png";
 import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "./components/ThemeContext";
 import Chat from "./components/Chat/Chat";
+import LoginPage from "./components/LoginPage/LoginPage";
+import { ProtectedRoute } from "./components/ProtectedRoute";
+import { AuthProvider } from "./hooks/useAuth";
 
 function App() {
 	return (
 		<ThemeProvider>
-			<div className="app">
-				<SideBar />
-				<ContentContainer>
+			<AuthProvider>
+				<div className="app">
 					<Routes>
-						<Route path="/" element={<Dashboard />} />
-						<Route path="/portfolio" element={<span>My portfolio subpage</span>} />
-						<Route path="/stocks" element={<span>Stocks subpage</span>} />
-						<Route path="/gm" element={<span>General meetings subpage</span>} />
-						<Route path="/help" element={<span>Help subpage</span>} />
+						<Route path="/login" element={<LoginPage />} />
+						<Route
+							path="/*"
+							element={
+								<ProtectedRoute>
+									<LoginRestrictedPages />
+								</ProtectedRoute>
+							}
+						/>
 					</Routes>
-				</ContentContainer>
-				<Chat />
-			</div>
+				</div>
+			</AuthProvider>
 		</ThemeProvider>
+	);
+}
+
+function LoginRestrictedPages() {
+	return (
+		<>
+			<SideBar />
+			<ContentContainer>
+				<Routes>
+					<Route path="" element={<Dashboard />} />
+					<Route path="portfolio" element={<span>My portfolio subpage</span>} />
+					<Route path="stocks" element={<span>Stocks subpage</span>} />
+					<Route path="gm" element={<span>General meetings subpage</span>} />
+					<Route path="help" element={<span>Help subpage</span>} />
+				</Routes>
+			</ContentContainer>
+			<Chat />
+		</>
 	);
 }
 

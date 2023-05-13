@@ -24,11 +24,11 @@
 a:visited,
 a:link {
 	text-decoration: none;
-	color: white;
+	color: var(--font-color);
 }
 
 .side-bar-item a:hover {
-	color: black;
+	color: var(--secondary-color);
 }
 
 .side-bar .utils {
@@ -44,4 +44,19 @@ a:link {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+}
+
+.side-bar-item.user-info {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+.side-bar-item.user-info button {
+	padding: 10px;
+	justify-self: center;
+	font-size: calc(var(--base-font-size));
 }

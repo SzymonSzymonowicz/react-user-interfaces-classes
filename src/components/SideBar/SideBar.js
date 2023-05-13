@@ -3,10 +3,13 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import ThemeContext from "../ThemeContext";
+import { useAuth } from "../../hooks/useAuth";
 
 function SideBar() {
 	const [previousFontSize, setPreviousFontSize] = useState(getComputedStyle(document.documentElement).getPropertyValue("--base-font-size"));
 	const { toggleDarkmode } = useContext(ThemeContext);
+
+	const { user, logout } = useAuth();
 
 	const increaseFontSize = () => {
 		alterFontSize((x) => x + 1);
@@ -38,6 +41,12 @@ function SideBar() {
 				</div>
 				<div>
 					<span className="material-symbols-outlined">first_page</span>
+				</div>
+			</div>
+			<div className="side-bar-item user-info">
+				<span>Welcome {user?.username}!</span>
+				<div>
+					<button onClick={logout}>Logout</button>
 				</div>
 			</div>
 			<div className="side-bar-item">
